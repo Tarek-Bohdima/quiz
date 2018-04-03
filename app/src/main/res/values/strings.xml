@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="quiz_subject">Test your Knowledge about Global Warming</string>
+    <string name="please_enter_your_name">Please Enter Your Name</string>
+    <string name="question1">Global warming is caused only by natural factors.</string>
+    <string name="answer11">True</string>
+    <string name="answer12">False</string>
+    <string name="question2">During what time of day does air travel have the least damaging effect on the environment?</string>
+    <string name="answer21">Daytime</string>
+    <string name="answer22">Nighttime</string>
+    <string name="answer23">It makes no difference</string>
+    <string name="question3">Which of the following industries could be negatively affected by global warming?</string>
+    <string name="answer31">Wine making</string>
+    <string name="answer32">Insurance</string>
+    <string name="answer33">Commercial fishing</string>
+    <string name="answer34">All the Above</string>
+    <string name="question4">Which country currently emits the most greenhouse gases?</string>
+    <string name="answer41">India</string>
+    <string name="answer42">Unite States</string>
+    <string name="answer43">China</string>
+    <string name="answer44">United Kingdom</string>
+    <string name="Bttn_score">Score</string>
+    <string name="user_score">Your Score:</string>
+    <string name="bttn_share">Share your Result</string>
+    <string name="Bttn_exit">Exit</string>
+</resources>
