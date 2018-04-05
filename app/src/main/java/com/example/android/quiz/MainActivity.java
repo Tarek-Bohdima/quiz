@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioButton;
@@ -62,6 +63,9 @@ public class MainActivity extends AppCompatActivity {
     public void score(View view) {
 
         String name = nameField.getText().toString();   //stores user's entered name
+        Button btn = (Button) findViewById(R.id.score_button);
+        btn.setEnabled(false);
+
 
         question1();
         question2();
@@ -69,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         question4();
 
         //Toast - Shows player's name and score
-        Toast.makeText(this, "Name: " + name +"\nScore: " + score +" of 4", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, "Your Score is: " + score +" of 4", Toast.LENGTH_LONG).show();
 
     }
 
@@ -120,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Final Score");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, name + "`s score is " + score + " of 4");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, name + "'s score in the Global Warming Quiz is " + score + " of 4");
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
