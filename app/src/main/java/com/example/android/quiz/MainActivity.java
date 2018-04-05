@@ -16,17 +16,17 @@ import com.example.android.quiz.R;
 public class MainActivity extends AppCompatActivity {
 
     //Declaring global variables
-    int score;
-    EditText nameField;
-    CheckBox india;
-    CheckBox unitedStates;
-    CheckBox china;
-    CheckBox unitedKingdom;
-    RadioGroup answers1;
-    RadioGroup answers2;
-    RadioGroup answers3;
-    RadioButton answer1;
-    RadioButton answer2;
+    private int score;
+    private EditText nameField;
+    private CheckBox india;
+    private CheckBox unitedStates;
+    private CheckBox china;
+    private CheckBox unitedKingdom;
+    private RadioGroup answers1;
+    private RadioGroup answers2;
+    private RadioGroup answers3;
+    private RadioButton answer1;
+    private RadioButton answer2;
 
 
 
