@@ -7,4 +7,6 @@
     <dimen name="margin20">20dp</dimen>
     <dimen name="margin40">40dp</dimen>
     <dimen name="margin_radio3">495dp</dimen>
+    <dimen name="editText_marginTop">180dp</dimen>
+    <dimen name="Radiogroup_marginTop">100dp</dimen>
 </resources>

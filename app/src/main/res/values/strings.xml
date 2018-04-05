@@ -20,7 +20,11 @@
     <string name="answer43">China</string>
     <string name="answer44">United Kingdom</string>
     <string name="Bttn_score">Score</string>
-    <string name="user_score">Your Score:</string>
+    <string name="user_score">Your Score: </string>
     <string name="bttn_share">Share your Result</string>
     <string name="Bttn_exit">Exit</string>
+    <string name="sharing_message">\'s score in the Global Warming Quiz is: </string>
+    <string name="total_score"> of 4</string>
+    <string name="Toast_Message">Your Score is: </string>
+    <string name="total_score_toast"> of 4</string>
 </resources>

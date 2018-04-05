@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         question4();
 
         //Toast - Shows player's name and score
-        Toast.makeText(this, "Your Score is: " + score +" of 4", Toast.LENGTH_LONG).show();
+        Toast.makeText(this, getString(R.string.Toast_Message) + score +" "+getString(R.string.total_score_toast), Toast.LENGTH_LONG).show();
 
     }
 
@@ -124,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Final Score");
-        sendIntent.putExtra(Intent.EXTRA_TEXT, name + "'s score in the Global Warming Quiz is " + score + " of 4");
+        sendIntent.putExtra(Intent.EXTRA_TEXT, name + getString(R.string.sharing_message) + score +" "+ getString(R.string.total_score));
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
