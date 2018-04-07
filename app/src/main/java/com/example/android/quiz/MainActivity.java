@@ -1,17 +1,14 @@
 package com.example.android.quiz;
 
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Toast;
-
-import com.example.android.quiz.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,9 +22,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup answers1;
     private RadioGroup answers2;
     private RadioGroup answers3;
-    private RadioButton answer1;
-    private RadioButton answer2;
-
+    private static final int INCREMENT = 1;
+    private Button btn;
 
 
 
@@ -47,50 +43,43 @@ public class MainActivity extends AppCompatActivity {
         answers1 = findViewById(R.id.Radio_Answers1);
         answers2 = findViewById(R.id.Radio_Answers2);
         answers3 = findViewById(R.id.Radio_Answers3);
-        //RadioButtoons initializations
-        answer1 = findViewById(R.id.radio_answer1);
-        answer2 = findViewById(R.id.radio_answer2);
 
     }
 
     // method called for incrementing score
-    private void increment_score() {
-        score +=1;
+    private void incrementScore() {
+        score += INCREMENT;
     }
 
 
     //method called to calculate final score
     public void score(View view) {
 
-        String name = nameField.getText().toString();   //stores user's entered name
-        Button btn = (Button) findViewById(R.id.score_button);
-        btn.setEnabled(false);
+            btn = (Button) findViewById(R.id.score_button);
+            btn.setEnabled(false);
 
 
-        question1();
-        question2();
-        question3();
-        question4();
+            question1();
+            question2();
+            question3();
+            question4();
 
-        //Toast - Shows player's name and score
-        Toast.makeText(this, getString(R.string.Toast_Message) + score +" "+getString(R.string.total_score_toast), Toast.LENGTH_LONG).show();
-
+            Toast.makeText(this, getString(R.string.Toast_Message) + score + " " + getString(R.string.total_score_toast), Toast.LENGTH_LONG).show();
     }
 
     //method called to calculate 1st question
     public void question1() {
         switch (answers1.getCheckedRadioButtonId()) {
             case R.id.radio_answer2:
-                increment_score();
+                incrementScore();
                 break;
         }
     }
-
     //method called to calculate 2nd question
     public void question2() {
         switch (answers2.getCheckedRadioButtonId()){
             case R.id.radio_answer3:
-                increment_score();
+                incrementScore();
                 break;
         }
     }
@@ -99,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
     public void question3(){
         switch (answers3.getCheckedRadioButtonId()){
             case R.id.radio_answer8:
-                increment_score();
+                incrementScore();
                 break;
         }
     }
@@ -113,7 +102,18 @@ public class MainActivity extends AppCompatActivity {
         Boolean question4d = unitedKingdom.isChecked();
 
         if (question4a && question4b && question4c && !question4d){
-            increment_score();
+            unitedKingdom.setEnabled(false);
+            unitedStates.setEnabled(false);
+            india.setEnabled(false);
+            china.setEnabled(false);
+            incrementScore();
+        }else if (!question4a && !question4b && !question4c && !question4d){
+
+                // no radio buttons are checked
+                score = 0 ;
+                btn.setEnabled(true);
+                Toast.makeText(this, "please answer question number 4" , Toast.LENGTH_SHORT).show();
+
         }
     }
 
@@ -123,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
-        sendIntent.putExtra(Intent.EXTRA_SUBJECT, "Final Score");
+        sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.intent_message_subject));
         sendIntent.putExtra(Intent.EXTRA_TEXT, name + getString(R.string.sharing_message) + score +" "+ getString(R.string.total_score));
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
