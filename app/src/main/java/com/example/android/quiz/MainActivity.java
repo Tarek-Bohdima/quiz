@@ -24,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup answers3;
     private static final int INCREMENT = 1;
     private Button btn;
+    private int shareScore;
+
 
 
 
@@ -64,7 +66,11 @@ public class MainActivity extends AppCompatActivity {
             question3();
             question4();
 
-            Toast.makeText(this, getString(R.string.Toast_Message) + score + " " + getString(R.string.total_score_toast), Toast.LENGTH_LONG).show();
+
+        shareScore = score;
+
+        Toast.makeText(this, getString(R.string.Toast_Message) + score + " " + getString(R.string.total_score_toast), Toast.LENGTH_LONG).show();
+            score = 0;
     }
 
     //method called to calculate 1st question
@@ -124,7 +130,7 @@ public class MainActivity extends AppCompatActivity {
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.intent_message_subject));
-        sendIntent.putExtra(Intent.EXTRA_TEXT, name + getString(R.string.sharing_message) + score +" "+ getString(R.string.total_score));
+        sendIntent.putExtra(Intent.EXTRA_TEXT, name + getString(R.string.sharing_message) + shareScore +" "+ getString(R.string.total_score));
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
