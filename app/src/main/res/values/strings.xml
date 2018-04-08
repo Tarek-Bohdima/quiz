@@ -28,4 +28,6 @@
     <string name="Toast_Message">Your Score is: </string>
     <string name="total_score_toast"> of 4</string>
     <string name="intent_message_subject">Final Score</string>
+    <string name="toast_message_complete_test">please choose an answer</string>
+    <string name="toast_message_complete_4">please answer question number 4</string>
 </resources>

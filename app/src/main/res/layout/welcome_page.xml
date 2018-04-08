@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_margin="@dimen/margin16"
+    android:layout_weight="1"
+    android:background="@drawable/gw1"
+    android:backgroundTint="@color/backgroundTint"
+    android:backgroundTintMode="src_over"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_main">
+            <!--pictures credits to www.nationalgeographic.com-->
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="top"
+                android:fontFamily="cursive"
+                android:textAlignment="center"
+                android:text="@string/quiz_subject"
+                android:textColor="@color/dark_brown"
+                android:theme="@style/TextViewStyle"
+                android:lineSpacingExtra="@dimen/text_spacing" />
+
+            <EditText
+                android:id="@+id/name_field"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/editText_marginTop"
+                android:gravity="center"
+                android:backgroundTint="@color/colorPrimaryDark"
+                android:hint="@string/please_enter_your_name"
+                android:inputType="textCapWords" />
+
+        </LinearLayout>

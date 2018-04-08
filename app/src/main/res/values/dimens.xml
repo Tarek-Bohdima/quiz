@@ -9,4 +9,6 @@
     <dimen name="margin_radio3">495dp</dimen>
     <dimen name="editText_marginTop">180dp</dimen>
     <dimen name="Radiogroup_marginTop">100dp</dimen>
+    <dimen name="text_spacing">16dp</dimen>
+    <dimen name="button_marginbottom">16dp</dimen>
 </resources>

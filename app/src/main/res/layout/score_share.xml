@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_margin="@dimen/margin16"
+    android:layout_weight="1"
+    android:background="@drawable/gw6"
+    android:backgroundTint="@color/backgroundTint"
+    android:backgroundTintMode="src_over"
+    android:orientation="vertical"
+    tools:showIn="@layout/activity_main">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin16"
+        android:text="@string/user_score"
+        style="@style/TextViewStyle" />
+
+
+    <Button
+        android:id="@+id/score_button"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin16"
+        android:onClick="score"
+        android:text="@string/Bttn_score" />
+
+    <Button
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onSharing"
+        android:text="@string/bttn_share" />
+
+    <Button
+        android:id="@+id/exit_button"
+        style="@style/Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="onExit"
+        android:text="@string/Bttn_exit" />
+
+</LinearLayout>

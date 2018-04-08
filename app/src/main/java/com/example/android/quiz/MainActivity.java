@@ -34,18 +34,27 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //initializing varaibles
+        bindViews();
+
+        //initializing global variable score
         score = 0;
+
+    }
+
+    private void bindViews(){
         nameField = findViewById(R.id.name_field);
         india = findViewById(R.id.checkbox_answer1);
         unitedStates = findViewById(R.id.checkbox_answer2);
         china = findViewById(R.id.checkbox_answer3);
         unitedKingdom = findViewById(R.id.checkbox_answer4);
-        //RadioGroups initializations
         answers1 = findViewById(R.id.Radio_Answers1);
         answers2 = findViewById(R.id.Radio_Answers2);
         answers3 = findViewById(R.id.Radio_Answers3);
+        btn = (Button) findViewById(R.id.score_button);
 
+    }
+    private View bindView(int viewId){
+        return findViewById(viewId);
     }
 
     // method called for incrementing score
@@ -57,14 +66,26 @@ public class MainActivity extends AppCompatActivity {
     //method called to calculate final score
     public void score(View view) {
 
-            btn = (Button) findViewById(R.id.score_button);
+
             btn.setEnabled(false);
 
-
+        if (answers1.getCheckedRadioButtonId() == -1 || answers2.getCheckedRadioButtonId() == -1 || answers3.getCheckedRadioButtonId() == -1)
+        {
+            // no radio buttons are checked in one of the first 3 questions
+            btn.setEnabled(true); //enable the score button
+            Toast.makeText(this, R.string.toast_message_complete_test , Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            // one of the radio buttons is checked
             question1();
             question2();
             question3();
             question4();
+        }
+
+
+
 
 
         shareScore = score;
@@ -73,8 +94,9 @@ public class MainActivity extends AppCompatActivity {
             score = 0;
     }
 
+
     //method called to calculate 1st question
-    public void question1() {
+    private void question1() {
         switch (answers1.getCheckedRadioButtonId()) {
             case R.id.radio_answer2:
                 incrementScore();
@@ -82,7 +104,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     //method called to calculate 2nd question
-    public void question2() {
+    private void question2() {
         switch (answers2.getCheckedRadioButtonId()){
             case R.id.radio_answer3:
                 incrementScore();
@@ -91,7 +113,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method called to calculate 3rd question
-    public void question3(){
+    private void question3(){
         switch (answers3.getCheckedRadioButtonId()){
             case R.id.radio_answer8:
                 incrementScore();
@@ -100,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //method called to calculate 4th question
-    public void question4(){
+    private void question4(){
 
         Boolean question4a = india.isChecked();
         Boolean question4b = unitedStates.isChecked();
@@ -115,10 +137,10 @@ public class MainActivity extends AppCompatActivity {
             incrementScore();
         }else if (!question4a && !question4b && !question4c && !question4d){
 
-                // no radio buttons are checked
+                // in case no Check buttons are checked
                 score = 0 ;
                 btn.setEnabled(true);
-                Toast.makeText(this, "please answer question number 4" , Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, R.string.toast_message_complete_4 , Toast.LENGTH_SHORT).show();
 
         }
     }
