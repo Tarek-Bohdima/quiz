@@ -1,3 +1,3 @@
 # quiz app 
 
-<img src="images/quiz_screenshot10.png"> 
+<img src="images/quiz_screenshot10.png" width="300"> 
