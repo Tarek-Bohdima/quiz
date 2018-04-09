@@ -25,6 +25,8 @@ public class MainActivity extends AppCompatActivity {
     private RadioGroup answers3;
     private Button btn;
     private int shareScore;
+    static final String SCORE = "score";
+    static final String SHARE_SCORE = "shareScore";
 
 
     @Override
@@ -33,10 +35,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         bindViews();
+    }
 
-        //initializing global variable score
-        score = 0;
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        score = savedInstanceState.getInt(SCORE);
+        shareScore = savedInstanceState.getInt(SHARE_SCORE);
 
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState){
+        super.onSaveInstanceState(outState);
+        outState.putInt(SCORE, score);
+        outState.putInt(SHARE_SCORE,shareScore);
     }
 
     private void bindViews() {
@@ -49,10 +62,9 @@ public class MainActivity extends AppCompatActivity {
         answers2 = findViewById(R.id.Radio_Answers2);
         answers3 = findViewById(R.id.Radio_Answers3);
         btn = (Button) findViewById(R.id.score_button);
-
     }
 
-    private View bindView(int viewId) {
+    private View bindViews(int viewId) {
         return findViewById(viewId);
     }
 
@@ -65,9 +77,8 @@ public class MainActivity extends AppCompatActivity {
     //method called to calculate final score
     public void score(View view) {
 
-
         btn.setEnabled(false);
-
+        //check if one of the radio groups questions is not answered
         if (answers1.getCheckedRadioButtonId() == -1 || answers2.getCheckedRadioButtonId() == -1 || answers3.getCheckedRadioButtonId() == -1) {
             // no radio buttons are checked in one of the first 3 questions
             btn.setEnabled(true); //enable the score button
