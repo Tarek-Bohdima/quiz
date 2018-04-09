@@ -11,46 +11,46 @@
     android:orientation="vertical"
     tools:showIn="@layout/activity_main">
 
-            <TextView
-                android:id="@+id/question_4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:text="@string/question4"
-                android:theme="@style/TextViewStyle" />
+    <TextView
+        android:id="@+id/question_4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/question4"
+        android:theme="@style/TextViewStyle" />
 
 
-            <CheckBox
-                android:id="@+id/checkbox_answer1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorAccent"
-                android:text="@string/answer41"
-                android:theme="@style/CheckBox_Answer" />
+    <CheckBox
+        android:id="@+id/checkbox_answer1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/colorAccent"
+        android:text="@string/answer41"
+        android:theme="@style/CheckBox_Answer" />
 
-            <CheckBox
-                android:id="@+id/checkbox_answer2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorAccent"
-                android:text="@string/answer42"
-                android:theme="@style/CheckBox_Answer" />
+    <CheckBox
+        android:id="@+id/checkbox_answer2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/colorAccent"
+        android:text="@string/answer42"
+        android:theme="@style/CheckBox_Answer" />
 
-            <CheckBox
-                android:id="@+id/checkbox_answer3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorAccent"
-                android:text="@string/answer43"
-                android:theme="@style/CheckBox_Answer" />
+    <CheckBox
+        android:id="@+id/checkbox_answer3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/colorAccent"
+        android:text="@string/answer43"
+        android:theme="@style/CheckBox_Answer" />
 
-            <CheckBox
-                android:id="@+id/checkbox_answer4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:buttonTint="@color/colorAccent"
-                android:text="@string/answer44"
-                android:theme="@style/CheckBox_Answer" />
+    <CheckBox
+        android:id="@+id/checkbox_answer4"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:buttonTint="@color/colorAccent"
+        android:text="@string/answer44"
+        android:theme="@style/CheckBox_Answer" />
 
 
-        </LinearLayout>
+</LinearLayout>

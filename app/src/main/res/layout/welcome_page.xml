@@ -10,28 +10,28 @@
     android:backgroundTintMode="src_over"
     android:orientation="vertical"
     tools:showIn="@layout/activity_main">
-            <!--pictures credits to www.nationalgeographic.com-->
+    <!--pictures credits to www.nationalgeographic.com-->
 
-            <TextView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="top"
-                android:fontFamily="cursive"
-                android:textAlignment="center"
-                android:text="@string/quiz_subject"
-                android:textColor="@color/dark_brown"
-                android:theme="@style/TextViewStyle"
-                android:lineSpacingExtra="@dimen/text_spacing" />
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="cursive"
+        android:gravity="top"
+        android:lineSpacingExtra="@dimen/text_spacing"
+        android:text="@string/quiz_subject"
+        android:textAlignment="center"
+        android:textColor="@color/dark_brown"
+        android:theme="@style/TextViewStyle" />
 
-            <EditText
-                android:id="@+id/name_field"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_marginTop="@dimen/editText_marginTop"
-                android:gravity="center"
-                android:backgroundTint="@color/colorPrimaryDark"
-                android:hint="@string/please_enter_your_name"
-                android:inputType="textCapWords" />
+    <EditText
+        android:id="@+id/name_field"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginTop="@dimen/editText_marginTop"
+        android:backgroundTint="@color/colorPrimaryDark"
+        android:gravity="center"
+        android:hint="@string/please_enter_your_name"
+        android:inputType="textCapWords" />
 
-        </LinearLayout>
+</LinearLayout>

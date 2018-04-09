@@ -13,11 +13,11 @@
 
 
     <TextView
+        style="@style/TextViewStyle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="@dimen/margin16"
-        android:text="@string/user_score"
-        style="@style/TextViewStyle" />
+        android:text="@string/user_score" />
 
 
     <Button
