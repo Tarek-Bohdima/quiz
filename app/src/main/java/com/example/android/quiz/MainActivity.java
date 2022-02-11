@@ -1,87 +1,64 @@
 package com.example.android.quiz;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
-import android.widget.Button;
-import android.widget.CheckBox;
-import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.android.quiz.databinding.ActivityMainBinding;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String TAG = "MainActivity";
     private static final int INCREMENT = 1;
-    //Declaring global variables
-    private int score;
-    private EditText nameField;
-    private CheckBox india;
-    private CheckBox unitedStates;
-    private CheckBox china;
-    private CheckBox unitedKingdom;
-    private RadioGroup answers1;
-    private RadioGroup answers2;
-    private RadioGroup answers3;
-    private Button btn;
-    private int shareScore;
     static final String SCORE = "score";
-    static final String SHARE_SCORE = "shareScore";
-
+    //Declaring global variables
+    private ActivityMainBinding binding;
+    private String name;
+    private int score;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        bindViews();
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        View view = binding.getRoot();
+        setContentView(view);
+        name = binding.welcomePageLayout.nameField.getText().toString();
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         score = savedInstanceState.getInt(SCORE);
-        shareScore = savedInstanceState.getInt(SHARE_SCORE);
-
     }
 
     @Override
-    protected void onSaveInstanceState(Bundle outState){
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putInt(SCORE, score);
-        outState.putInt(SHARE_SCORE,shareScore);
     }
 
-    private void bindViews() {
-        nameField = findViewById(R.id.name_field);
-        india = findViewById(R.id.checkbox_answer1);
-        unitedStates = findViewById(R.id.checkbox_answer2);
-        china = findViewById(R.id.checkbox_answer3);
-        unitedKingdom = findViewById(R.id.checkbox_answer4);
-        answers1 = findViewById(R.id.Radio_Answers1);
-        answers2 = findViewById(R.id.Radio_Answers2);
-        answers3 = findViewById(R.id.Radio_Answers3);
-        btn = (Button) findViewById(R.id.score_button);
-    }
-
-    private View bindViews(int viewId) {
-        return findViewById(viewId);
-    }
 
     // method called for incrementing score
     private void incrementScore() {
         score += INCREMENT;
     }
 
-
     //method called to calculate final score
     public void score(View view) {
 
-        btn.setEnabled(false);
+        binding.scoreShareLayout.scoreButton.setEnabled(false);
         //check if one of the radio groups questions is not answered
-        if (answers1.getCheckedRadioButtonId() == -1 || answers2.getCheckedRadioButtonId() == -1 || answers3.getCheckedRadioButtonId() == -1) {
+        if (binding.firstQuestionLayout.RadioAnswers1.getCheckedRadioButtonId() == -1 ||
+                binding.secondQuestionLayout.RadioAnswers2.getCheckedRadioButtonId() == -1 ||
+                binding.thirdQuestionLayout.RadioAnswers3.getCheckedRadioButtonId() == -1) {
             // no radio buttons are checked in one of the first 3 questions
-            btn.setEnabled(true); //enable the score button
+            binding.scoreShareLayout.scoreButton.setEnabled(true); //enable the score button
             Toast.makeText(this, R.string.toast_message_complete_test, Toast.LENGTH_SHORT).show();
         } else {
             // one of the radio buttons is checked
@@ -89,77 +66,71 @@ public class MainActivity extends AppCompatActivity {
             question2();
             question3();
             question4();
+
+            Toast.makeText(this,
+                    getString(R.string.Toast_Message) + score + " " + getString(R.string.total_score_toast),
+                    Toast.LENGTH_LONG).show();
         }
-
-        shareScore = score;
-
-        Toast.makeText(this, getString(R.string.Toast_Message) + score + " " + getString(R.string.total_score_toast), Toast.LENGTH_LONG).show();
         score = 0;
     }
 
     //method called to calculate 1st question
     private void question1() {
-        switch (answers1.getCheckedRadioButtonId()) {
-            case R.id.radio_answer2:
-                incrementScore();
-                break;
+        if (binding.firstQuestionLayout.radioAnswer2.isChecked()) {
+            incrementScore();
         }
-
     }
 
     //method called to calculate 2nd question
     private void question2() {
-        switch (answers2.getCheckedRadioButtonId()) {
-            case R.id.radio_answer3:
-                incrementScore();
-                break;
+        if (binding.secondQuestionLayout.radioAnswer3.isChecked()) {
+            incrementScore();
         }
     }
 
     //method called to calculate 3rd question
     private void question3() {
-        switch (answers3.getCheckedRadioButtonId()) {
-            case R.id.radio_answer8:
-                incrementScore();
-                break;
+        if (binding.thirdQuestionLayout.radioAnswer8.isChecked()) {
+            incrementScore();
         }
     }
 
     //method called to calculate 4th question
     private void question4() {
-
-        Boolean question4a = india.isChecked();
-        Boolean question4b = unitedStates.isChecked();
-        Boolean question4c = china.isChecked();
-        Boolean question4d = unitedKingdom.isChecked();
+        boolean question4a = binding.fourthQuestionLayout.checkboxAnswer1.isChecked();
+        boolean question4b = binding.fourthQuestionLayout.checkboxAnswer2.isChecked();
+        boolean question4c = binding.fourthQuestionLayout.checkboxAnswer3.isChecked();
+        boolean question4d = binding.fourthQuestionLayout.checkboxAnswer4.isChecked();
 
         if (question4a && question4b && question4c && !question4d) {
-            unitedKingdom.setEnabled(false);
-            unitedStates.setEnabled(false);
-            india.setEnabled(false);
-            china.setEnabled(false);
+            binding.fourthQuestionLayout.checkboxAnswer4.setEnabled(false);
+            binding.fourthQuestionLayout.checkboxAnswer2.setEnabled(false);
+            binding.fourthQuestionLayout.checkboxAnswer1.setEnabled(false);
+            binding.fourthQuestionLayout.checkboxAnswer3.setEnabled(false);
             incrementScore();
         } else if (!question4a && !question4b && !question4c && !question4d) {
 
             // in case no Check buttons are checked
             score = 0;
-            btn.setEnabled(true);
+            binding.scoreShareLayout.scoreButton.setEnabled(true);
             Toast.makeText(this, R.string.toast_message_complete_4, Toast.LENGTH_SHORT).show();
-
         }
     }
 
     //method to share score by email or other social media on user's phone
     public void onSharing(View view) {
-        String name = nameField.getText().toString();
-
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
         sendIntent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.intent_message_subject));
-        sendIntent.putExtra(Intent.EXTRA_TEXT, name + getString(R.string.sharing_message) + shareScore + " " + getString(R.string.total_score));
+        sendIntent.putExtra(Intent.EXTRA_TEXT, name + getString(R.string.sharing_message) + score + " " + getString(R.string.total_score));
         sendIntent.setType("text/plain");
-        if (sendIntent.resolveActivity(getPackageManager()) != null) {
+
+        // credit https://stackoverflow.com/a/64945724/8899344
+        try {
             startActivity(sendIntent);
+        } catch (ActivityNotFoundException exception) {
+            Toast.makeText(this, "Activity not found!", Toast.LENGTH_SHORT).show();
+            Log.d(TAG, "onSharing: }" + exception);
         }
     }
 
@@ -168,7 +139,3 @@ public class MainActivity extends AppCompatActivity {
         finish();
     }
 }
-
-
-
-

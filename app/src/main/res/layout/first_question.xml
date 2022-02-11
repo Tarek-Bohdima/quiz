@@ -39,5 +39,4 @@
             android:theme="@style/RadioButton_Answer" />
     </RadioGroup>
 
-
 </LinearLayout>

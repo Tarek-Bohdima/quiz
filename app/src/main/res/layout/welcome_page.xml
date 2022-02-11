@@ -8,6 +8,7 @@
     android:background="@drawable/gw1"
     android:backgroundTint="@color/backgroundTint"
     android:backgroundTintMode="src_over"
+    android:focusableInTouchMode="true"
     android:orientation="vertical"
     tools:showIn="@layout/activity_main">
     <!--pictures credits to www.nationalgeographic.com-->
@@ -16,7 +17,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="cursive"
-        android:gravity="top"
+        android:gravity="center_horizontal"
         android:lineSpacingExtra="@dimen/text_spacing"
         android:text="@string/quiz_subject"
         android:textAlignment="center"
@@ -32,6 +33,8 @@
         android:backgroundTint="@color/colorPrimaryDark"
         android:gravity="center"
         android:hint="@string/please_enter_your_name"
-        android:inputType="textCapWords" />
+        android:imeOptions="actionDone"
+        android:inputType="textPersonName"
+        android:minHeight="48dp" />
 
 </LinearLayout>

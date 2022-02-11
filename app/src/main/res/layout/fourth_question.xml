@@ -19,7 +19,6 @@
         android:text="@string/question4"
         android:theme="@style/TextViewStyle" />
 
-
     <CheckBox
         android:id="@+id/checkbox_answer1"
         android:layout_width="match_parent"
@@ -51,6 +50,5 @@
         android:buttonTint="@color/colorAccent"
         android:text="@string/answer44"
         android:theme="@style/CheckBox_Answer" />
-
 
 </LinearLayout>

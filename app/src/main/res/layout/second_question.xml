@@ -24,8 +24,8 @@
         android:id="@+id/Radio_Answers2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="@dimen/margin20"
-        android:layout_marginTop="@dimen/margin40">
+        android:layout_marginTop="@dimen/margin40"
+        android:layout_marginBottom="@dimen/margin20">
 
         <RadioButton
             android:id="@+id/radio_answer3"
@@ -48,6 +48,5 @@
             android:text="@string/answer23"
             android:theme="@style/RadioButton_Answer" />
     </RadioGroup>
-
 
 </LinearLayout>
